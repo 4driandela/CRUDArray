@@ -1,6 +1,4 @@
 import java.util.Arrays;
-import java.util.zip.ZipError;
-
 public class array {
 
 	public static void main(String[] args) {
@@ -14,6 +12,7 @@ public class array {
 		String[] dueños = {"" , "", "", "","" , "","" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" };
 		
 		int[] posicionesBusqueda = new int [20];
+		int posicion;
 		
 		String especie;
 		String raza;
@@ -47,10 +46,11 @@ public class array {
 				
 				espacioLibre = herramientas.verificarEspacioLibre(dueños);
 				System.out.println(espacioLibre);
+				
 				break;
+
 			case 2:
 				mensajes.MenFiltroBusqueda();
-				
 				numMenu = herramientas.pedirInt();
 				
 				switch(numMenu) {
@@ -64,94 +64,53 @@ public class array {
 					mensajes.MenDueño();
 					dueño = herramientas.pedirString();
 					
-					accionesArray.buscarMascota(especie, raza, dueño, especies, razas, dueños);
+					accionesArray.buscarMascota(especie, raza, dueño, especies, razas, dueños,posicionesBusqueda);
 					
-					do {
-						posicionesBusqueda[j] = accionesArray.buscarMascota(especie, raza, dueño, especies, razas, dueños)[i];
-						i++;
-						j++;
-						
-					}while(accionesArray.buscarMascota(especie, raza, dueño, especies, razas, dueños)[i] != 0);
-					i = 0;
-					j = 0;
-					
-					do {
-						mensajes.MenBusquedaRes(especies, razas, dueños,posicionesBusqueda, j, i);
-						j++;
-						i++;
-						
-					}while(posicionesBusqueda[j] != 0);
-					j = 0;
-					i = 0;
-					break;
+					for(int m = 0; m < posicionesBusqueda.length; m++) {
+						if(posicionesBusqueda[m] != 99) {
+							mensajes.MenBusquedaRes(especies, razas, dueños, posicionesBusqueda[m]);
+						}
+					}
+				break;
 				case 2:
 					mensajes.MenEspecie();
 					especie = herramientas.pedirString();
 					
-					do {
-						posicionesBusqueda[j] = accionesArray.buscarMascotaEspecie(especie,especies)[i];
-						i++;
-						j++;
-						
-					}while(accionesArray.buscarMascotaEspecie(especie,especies)[i] != 0);
-					j = 0;
-					i = 0;
-					do {
-						mensajes.MenBusquedaRes(especies, razas, dueños,posicionesBusqueda, j, i);
-						j++;
-						i++;
-					}while(posicionesBusqueda[j] != 0);
-					j = 0;
-					i = 0;
+					accionesArray.buscarMascotaEspecie(especie, especies, posicionesBusqueda);
+					for(int m = 0; m < posicionesBusqueda.length; m++) {
+						if(posicionesBusqueda[m] != 99) {
+							mensajes.MenBusquedaRes(especies, razas, dueños, posicionesBusqueda[m]);
+						}
+					}
 					break;
 					
 				case 3:
 					mensajes.MenRaza();
 					raza = herramientas.pedirString();
+					accionesArray.buscarMascotaRaza(raza, razas, posicionesBusqueda);
 					
-					do {
-						posicionesBusqueda[j] = accionesArray.buscarMascotaRaza(raza,razas)[i];
-						i++;
-						j++;
-						
-					}while(accionesArray.buscarMascotaRaza(raza,razas)[i] != 0);
-					j = 0;
-					i = 0;
-					do {
-						mensajes.MenBusquedaRes(especies, razas, dueños,posicionesBusqueda, j, i);
-						j++;
-						i++;
-						
-					}while(posicionesBusqueda[j] != 0);
-					j = 0;
-					i = 0;
+					for(int m = 0; m < posicionesBusqueda.length; m++) {
+						if(posicionesBusqueda[m] != 99) {
+							mensajes.MenBusquedaRes(especies, razas, dueños, posicionesBusqueda[m]);
+						}
+					}
 					break;
 					
 				case 4:
 					mensajes.MenDueño();
 					dueño = herramientas.pedirString();
+					accionesArray.buscarMascotaDueño(dueño, dueños, posicionesBusqueda);
 					
-					do {
-						posicionesBusqueda[j] = accionesArray.buscarMascotaDueño(dueño,dueños)[i];
-						i++;
-						j++;
-						
-					}while(accionesArray.buscarMascotaDueño(dueño,dueños)[i] != 0);
-					j = 0;
-					i = 0;
-					do {
-						
-						mensajes.MenBusquedaRes(especies, razas, dueños,posicionesBusqueda, j, i);
-						j++;
-						i++;
-						
-					}while(posicionesBusqueda[j] != 0);
-					j = 0;
-					i = 0;
+					for(int m = 0; m < posicionesBusqueda.length; m++) {
+						if(posicionesBusqueda[m] != 99) {
+							mensajes.MenBusquedaRes(especies, razas, dueños, posicionesBusqueda[m]);
+						}
+					}
 					break;
 				}
 				break;
-			case 3: 
+			case 3:
+				posicion = 0;
 				mensajes.MenEspecie();
 				especie = herramientas.pedirString();
 				
@@ -161,48 +120,70 @@ public class array {
 				mensajes.MenDueño();
 				dueño = herramientas.pedirString();
 				
-				accionesArray.buscarMascota(especie, raza, dueño, especies, razas, dueños);
+				accionesArray.buscarMascota(especie, raza, dueño, especies, razas, dueños,posicionesBusqueda);
 				
-				
-				do {
-					posicionesBusqueda[j] = accionesArray.buscarMascota(especie, raza, dueño, especies, razas, dueños)[i];
-					i++;
-					j++;
-					
-				}while(accionesArray.buscarMascota(especie, raza, dueño, especies, razas, dueños)[i] != 0);
-				i = 0;
-				j = 0;
-				
-				do {
-					mensajes.MenBusquedaRes(especies, razas, dueños,posicionesBusqueda, j, i);
-					j++;
-					i++;
-					
-				}while(posicionesBusqueda[j] != 0);
-				j = 0;
-				i = 0;
-			
-			mensajes.MenNewEspecie();
-			especie = herramientas.pedirString();
-			
-			mensajes.MenNewRaza();
-			raza = herramientas.pedirString();
-			
-			mensajes.MenNewDueño();
-			dueño = herramientas.pedirString();
-			
-			accionesArray.añadirMascota(especies,razas,dueños,especie, raza, dueño,posicionesBusqueda[0]);
-			mensajes.MenBusquedaRes(especies, razas, dueños, posicionesBusqueda, j, i);
-
-			case 4:
-					System.out.println("Dueños: " + Arrays.toString(dueños));
-					System.out.println("Especie " + Arrays.toString(especies));
-					System.out.println("Raza " + Arrays.toString(razas));
-			case 5: 
-					System.out.println("Terminamos con el programa");
-					break;
+				for(int m = 0; m < posicionesBusqueda.length; m++) {
+					if(posicionesBusqueda[m] != 99) {
+						mensajes.MenBusquedaRes(especies, razas, dueños, posicionesBusqueda[m]);
+						posicion = m;
+					}
 				}
-			}while(numMenu != 5);
+				mensajes.MenNewEspecie();
+				especies[posicion] = herramientas.pedirString();
+				
+				mensajes.MenNewRaza();
+				razas[posicion] = herramientas.pedirString();
+				
+				mensajes.MenNewDueño();
+				dueños[posicion] = herramientas.pedirString();
+				
+				mensajes.MenBusquedaRes(especies, razas, dueños, posicion);
+				
+				System.out.println("Dueños: " + Arrays.toString(dueños));
+				System.out.println("Especie " + Arrays.toString(especies));
+				System.out.println("Raza " + Arrays.toString(razas));
+				
+					break;
+			case 4:
+				posicion = 0;
+				mensajes.MenEspecie();
+				especie = herramientas.pedirString();
+				
+				mensajes.MenRaza();
+				raza = herramientas.pedirString();
+				
+				mensajes.MenDueño();
+				dueño = herramientas.pedirString();
+				
+				accionesArray.buscarMascota(especie, raza, dueño, especies, razas, dueños,posicionesBusqueda);
+				
+				for(int m = 0; m < posicionesBusqueda.length; m++) {
+					if(posicionesBusqueda[m] != 99) {
+						mensajes.MenBusquedaRes(especies, razas, dueños, posicionesBusqueda[m]);
+						posicion = m;
+					}
+				}
+				
+				especies[posicion] = "";
+				
+				razas[posicion] = "";
+				
+				dueños[posicion] = "";
+				
+				System.out.println("Dueños: " + Arrays.toString(dueños));
+				System.out.println("Especie " + Arrays.toString(especies));
+				System.out.println("Raza " + Arrays.toString(razas));
+				break;
+			case 5: 
+				System.out.println("Dueños: " + Arrays.toString(dueños));
+				System.out.println("Especie " + Arrays.toString(especies));
+				System.out.println("Raza " + Arrays.toString(razas));
+				break;
+			case 6: 
+				System.out.println("Terminamos con el programa");
+				break;
+				}
+			}while(numMenu != 6);
 		}	
 	}
 		

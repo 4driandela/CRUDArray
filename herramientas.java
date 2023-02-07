@@ -27,7 +27,7 @@ public class herramientas {
 		eleccionMenu = herramientas.pedirInt();
 				
 		do {
-			if(eleccionMenu <=5 && eleccionMenu > 0) {
+			if(eleccionMenu <=6 && eleccionMenu > 0) {
 				numCorrecto = true;
 				System.out.println("Ahora si");
 			}else {

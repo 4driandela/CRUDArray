@@ -2,7 +2,7 @@
 public class mensajes {
 	
 	public static void menu() {
-		System.out.println("Qué accion queres realizar? \n1- Añadir mascota.\n2- Buscar mascota.\n3- Modificar mascota.\n4- Buscar mascota.\n5- Exit");
+		System.out.println("Qué accion queres realizar? \n1- Añadir mascota.\n2- Buscar mascota.\n3- Modificar mascota.\n4- Borrar mascota.\n5- Exit");
 	}
 	
 	public static void MenFiltroBusqueda(){
@@ -24,12 +24,39 @@ public class mensajes {
 		System.out.println("Cuál es el nuevo para dueño?");
 	}
 	
-	public static void MenBusquedaRes(String[] especies,String[]razas,String[]dueños,int[]posicionesBusqueda, int j, int i){
-		System.out.println(i + 1);
-		System.out.println("	- Especie: " + especies[posicionesBusqueda[j]]);
-		System.out.println("	- Raza: " + razas[posicionesBusqueda[j]]);
-		System.out.println("	- Dueño: " + dueños[posicionesBusqueda[j]]);
-		System.out.println("");
+	public static void MenBusquedaRes(String[] especies,String[]razas,String[]dueños,int posicionesBusqueda){
+		
+			System.out.println("Pos:" + posicionesBusqueda);
+			System.out.println("Especie: " + especies[posicionesBusqueda]);
+			System.out.println("Raza: " + razas[posicionesBusqueda]);
+			System.out.println("Dueño: " + dueños[posicionesBusqueda]);
+			System.out.println("");
+		
 		
 	}
+	public static void MenBusquedaEspecie(String[] especies,int posicionesBusqueda){
+		
+		System.out.println("Pos:" + posicionesBusqueda);
+		System.out.println("Especie: " + especies[posicionesBusqueda]);
+		System.out.println("");
+	
+	
+	}
+	public static void MenBusquedaRaza(String[]razas,int posicionesBusqueda){
+		
+		System.out.println("Pos:" + posicionesBusqueda);
+		System.out.println("Raza: " + razas[posicionesBusqueda]);
+		System.out.println("");
+	
+	
+	}
+	public static void MenBusquedaDueño(String[]dueños,int posicionesBusqueda){
+		
+		System.out.println("Pos:" + posicionesBusqueda);
+		System.out.println("Dueño: " + dueños[posicionesBusqueda]);
+		System.out.println("");
+	
+	
+	}
+	
 }
