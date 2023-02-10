@@ -1,6 +1,18 @@
 
 public class accionesArray {
-	
+	/**AccionesArray contiene los métodos empleados para añadir o buscar. 
+	 *Añade los tres nuevos strings a la posición correspondiente con cada uno de los arrays.
+	 *@author Adriandela
+	 *
+	 *@param especies Array que guarda las especies que se registran.
+	 *@param razas Array que guarda las razas que se registran.
+	 *@param dueños Array que guarda los dueños que se registran.
+	 *@param especie String que recoge la especie a añadir al array.
+	 *@param raza String que recoge la raza a añadir al array.
+	 *@param dueño String que recoge el dueño a añadir al array.
+	 *@param i Int que hace alusión a la posicion del array.
+	 *
+	 */
 	public static void añadirMascota(String[] especies,String[]razas ,String[] dueños,String especie,String raza,String dueño,int i) {
 		
 		especies[i] = especie;
@@ -9,6 +21,19 @@ public class accionesArray {
 		 
 		 dueños[i] = dueño;
 	}
+	/**AccionesArray contiene los métodos empleados para añadir o buscar.
+	 *Busca filtrando por los tres valores que introduce el usuario por consola (String dueño, String especie y String raza).
+	 *@author Adriandela
+	 *
+	 *@param especies String[] que tiene guardados los string registrados previamente especie.
+	 *@param razas String[] que tiene guardados los string registrados previamente de raza.
+	 *@param dueños String[] que tiene guardados los string registrados previamente de dueño.
+	 *@param especie String que recoge la especie a buscar en el array.
+	 *@param raza String que recoge la raza a buscar en el array.
+	 *@param dueño String que recoge el dueño a buscar en el array.
+	 *@param posicionesBusqueda Int[] que guarda las posiciones que coinciden con los tres valores del filtro.
+	 *
+	 */
 	public static void buscarMascota(String especie, String raza, String dueño, String[] especies,String[]razas ,String[] dueños, int[] posicionesBusqueda) {
 		int k= 0;
 		int j = 0;
@@ -50,7 +75,14 @@ public class accionesArray {
 				}
 			}
 	}
-	
+	/**AccionesArray contiene los métodos empleados para añadir o buscar. 
+	 *Busca filtrando por el valor raza.
+	 *@author Adriandela
+	 *
+	 *@param razas String[] que tiene guardados los string registrados previamente de raza.
+	 *@param raza String que recoge la raza a buscar en el array.
+	 *@param posicionesBusqueda Int[] que guarda las posiciones que coinciden con el valor de raza.
+	 */
 		
 	
 	public static void buscarMascotaRaza(String raza, String[] razas, int[] posicionesBusqueda) {
@@ -70,7 +102,14 @@ public class accionesArray {
 			}
 		}
 	}
-		
+	/**AccionesArray contiene los métodos empleados para añadir o buscar. 
+	 *Busca filtrando por el valor dueño.
+	 *@author Adriandela
+	 *
+	 *@param dueños String[] que tiene guardados los string registrados previamente de dueño.
+	 *@param dueño String que recoge la dueño a buscar en el array.
+	 *@param posicionesBusqueda Int[] que guarda las posiciones que coinciden con el valor de dueño.
+	 */
 	public static void buscarMascotaDueño(String dueño, String[] dueños, int[] posicionesBusqueda) {
 		
 		int j = 0;
@@ -88,7 +127,14 @@ public class accionesArray {
 			}
 		}
 	}
-	
+	/**AccionesArray contiene los métodos empleados para añadir o buscar. 
+	 *Busca filtrando por el valor especie.
+	 *@author Adriandela
+	 *
+	 *@param especies String[] que tiene guardados los string registrados previamente de especie.
+	 *@param especie String que recoge la especie a buscar en el array.
+	 *@param posicionesBusqueda Int[] que guarda las posiciones que coinciden con el valor de especie.
+	 */
 	public static void buscarMascotaEspecie(String especie, String[] especies, int[] posicionesBusqueda) {
 		
 		int j = 0;
@@ -107,21 +153,4 @@ public class accionesArray {
 		}
 	}
 	
-	public static void modificarMascota(String[] especies,String[]razas ,String[] dueños, int[] posicion) {
-		String especie;
-		String raza;
-		String dueño;
-		
-		
-		mensajes.MenNewEspecie();
-		especie = herramientas.pedirString();
-		
-		mensajes.MenNewRaza();
-		raza = herramientas.pedirString();
-		
-		mensajes.MenNewDueño();
-		dueño = herramientas.pedirString();
-		
-		accionesArray.añadirMascota(especies,razas,dueños,especie, raza, dueño, posicion[0]);
-	}
 }
