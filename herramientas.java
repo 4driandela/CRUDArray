@@ -1,7 +1,11 @@
 import java.util.Scanner;
 
 public class herramientas {
-	
+	/**Herramientas contiene metodos generales usados en el resto de clases.
+	 * Método que pide por teclado una cadena.
+	 * @author Adriandela
+	 * @return Devuelve la cadena introducida por teclado.
+	 */
 	public static String pedirString(){
 		String mascota;
 		
@@ -58,7 +62,25 @@ public class herramientas {
 		
 		
 		return i;
-	} 
+	}public static boolean verificarArrayVacio(String[] mascotas){
+		int i = 0;
+		boolean vacio = true;
+		int longitud;
+		
+		longitud = mascotas.length;
+		
+		do {
+			if(mascotas[i] == "") {
+				vacio = true;
+				i++;
+			}else {
+				vacio = false;
+			}
+		}while(vacio && longitud < 20);
+		
+		
+		return vacio;
+	}  
 	
 		
 	
