@@ -1,5 +1,8 @@
+import java.util.Arrays;
 
 public class mensajes {
+		
+	
 	/**Clase que recoge los metodos de mensaje.
 	 * Muestra por pantalla el menú de elección del programa.
 	 * @author Adriandela
@@ -119,6 +122,18 @@ public class mensajes {
 		System.out.println("");
 	
 	
+	}
+	/**Clase que recoge los metodos de mensaje.
+	 * Muestra por pantalla todos los datos guardados.
+	 * @author Adriandela
+	 * @param razas String[] array que tiene almacenados los valores de raza.
+	 * @param especies String[] array que tiene almacenados los valores de especie.
+	 * @param dueños String[] array que tiene almacenados los valores de dueño.
+	 */
+	public static void vistaArrays(String[]dueños, String[]especies, String[]razas) {
+		System.out.println("Dueños: " + Arrays.toString(dueños));
+		System.out.println("Especie " + Arrays.toString(especies));
+		System.out.println("Raza " + Arrays.toString(razas));
 	}
 	
 }

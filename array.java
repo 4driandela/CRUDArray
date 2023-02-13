@@ -1,13 +1,10 @@
-import java.util.Arrays;
+
 public class array {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int numMenu;
-		
-		int i = 0;
-		int j = 0;
-		
+
 		String[] especies = {"" , "", "", "","" , "","" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" };
 		String[] razas = {"" , "", "", "","" , "","" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" };
 		String[] dueños = {"" , "", "", "","" , "","" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" };
@@ -24,22 +21,22 @@ public class array {
 		do {
 			mensajes.menu();
 			
-			numMenu = herramientas.buclemenu();//Devuelve la elección en int del menú;
+			numMenu = herramientas.buclemenu();
 			
 			switch(numMenu) {
-			case 1:
+			case 1://Añade datos a los arrays.
 				espacioLibre = herramientas.verificarEspacioLibre(dueños);
 				System.out.println(espacioLibre);
 				if(espacioLibre < 20) {
 				
-				mensajes.MenEspecie();
-				especie = herramientas.pedirString();
-				
-				mensajes.MenRaza();
-				raza = herramientas.pedirString();
-				
-				mensajes.MenDueño();
-				dueño = herramientas.pedirString();
+					mensajes.MenEspecie();
+					especie = herramientas.pedirString();
+					
+					mensajes.MenRaza();
+					raza = herramientas.pedirString();
+					
+					mensajes.MenDueño();
+					dueño = herramientas.pedirString();
 			
 				accionesArray.añadirMascota(especies,razas,dueños,especie, raza, dueño, espacioLibre);
 				System.out.println((especies[espacioLibre]));
@@ -60,7 +57,7 @@ public class array {
 				numMenu = herramientas.pedirInt();
 				
 				switch(numMenu) {
-				case 1:
+				case 1://Busqueda de valores filtrando por los tres valores.
 					mensajes.MenEspecie();
 					especie = herramientas.pedirString();
 					
@@ -72,13 +69,13 @@ public class array {
 					
 					accionesArray.buscarMascota(especie, raza, dueño, especies, razas, dueños,posicionesBusqueda);
 					
-					for(int m = 0; m < posicionesBusqueda.length; m++) {
-						if(posicionesBusqueda[m] != 99) {
+					for(int m = 0; m < posicionesBusqueda.length; m++) {//
+						if(posicionesBusqueda[m] != 99) {//En el método de busqueda, guarda un 99 en todas las posiciones del array que no coinciden. Se aplica también a los otros métodos de búsqueda.
 							mensajes.MenBusquedaRes(especies, razas, dueños, posicionesBusqueda[m]);
 						}
 					}
 				break;
-				case 2:
+				case 2://Busqueda de valores filtrando por especie
 					mensajes.MenEspecie();
 					especie = herramientas.pedirString();
 					
@@ -90,7 +87,7 @@ public class array {
 					}
 					break;
 					
-				case 3:
+				case 3://Busqueda de valores filtrando por raza.
 					mensajes.MenRaza();
 					raza = herramientas.pedirString();
 					accionesArray.buscarMascotaRaza(raza, razas, posicionesBusqueda);
@@ -102,7 +99,7 @@ public class array {
 					}
 					break;
 					
-				case 4:
+				case 4://Busqueda de valores filtrando por dueño.
 					mensajes.MenDueño();
 					dueño = herramientas.pedirString();
 					accionesArray.buscarMascotaDueño(dueño, dueños, posicionesBusqueda);
@@ -119,9 +116,9 @@ public class array {
 				}
 				break;
 				
-			case 3:
+			case 3://Modifica los datos en una posición del array.
 				if(!herramientas.verificarArrayVacio(dueños)) {
-				posicion = 0;
+				posicion = -1;//Se mantiene el valor de -1 para posición si no hay ninguna coincidencia. Se emplea en modificar y borrar.
 				mensajes.MenEspecie();
 				especie = herramientas.pedirString();
 				
@@ -139,26 +136,28 @@ public class array {
 						posicion = m;
 					}
 				}
-				mensajes.MenNewEspecie();
-				especies[posicion] = herramientas.pedirString();
-				
-				mensajes.MenNewRaza();
-				razas[posicion] = herramientas.pedirString();
-				
-				mensajes.MenNewDueño();
-				dueños[posicion] = herramientas.pedirString();
-				
-				mensajes.MenBusquedaRes(especies, razas, dueños, posicion);
-				
-				System.out.println("Dueños: " + Arrays.toString(dueños));
-				System.out.println("Especie " + Arrays.toString(especies));
-				System.out.println("Raza " + Arrays.toString(razas));
+					if(posicion != -1) {
+						mensajes.MenNewEspecie();
+						especies[posicion] = herramientas.pedirString();
+						
+						mensajes.MenNewRaza();
+						razas[posicion] = herramientas.pedirString();
+						
+						mensajes.MenNewDueño();
+						dueños[posicion] = herramientas.pedirString();
+						
+						mensajes.MenBusquedaRes(especies, razas, dueños, posicion);
+						
+						mensajes.vistaArrays(dueños, especies, razas);
+					}else {
+						System.out.println("Lo sentimos, no encontramos los datos a modificar");
+					}
 				}else {
 					System.out.println("Lo sentimos, el array actualmente está vacío");
 				}
 				
 					break;
-			case 4:
+			case 4://Borra los valores en una posición del array.
 				if(!herramientas.verificarArrayVacio(dueños)) {
 					posicion = -1;
 					mensajes.MenEspecie();
@@ -179,26 +178,19 @@ public class array {
 						}
 					}
 					if(posicion != -1) {
-					especies[posicion] = "";
-					
-					razas[posicion] = "";
-					
-					dueños[posicion] = "";
-					
-					System.out.println("Dueños: " + Arrays.toString(dueños));
-					System.out.println("Especie " + Arrays.toString(especies));
-					System.out.println("Raza " + Arrays.toString(razas));
-						}
+						accionesArray.borrarArray(dueños, especies, razas, posicion);
+					}else {
+						System.out.println("Lo sentimos, no encontramos los datos a borrar");
+					}
 				}else {
 					System.out.println("Lo sentimos, el array actualmente está vacío");
 				}
 				break;
-			case 5: 
-				System.out.println("Dueños: " + Arrays.toString(dueños));
-				System.out.println("Especie " + Arrays.toString(especies));
-				System.out.println("Raza " + Arrays.toString(razas));
+			case 5://Muestra los valores que contienen los arrays.
+				mensajes.vistaArrays(dueños, especies, razas);
+				
 				break;
-			case 6: 
+			case 6://Finaliza con el programa.
 				System.out.println("Terminamos con el programa");
 				break;
 				}
