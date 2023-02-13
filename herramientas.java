@@ -14,6 +14,11 @@ public class herramientas {
 		
 		return mascota;
 	}
+	/**Herramientas contiene metodos generales usados en el resto de clases.
+	 * Método que pide por teclado un int.
+	 * @author Adriandela
+	 * @return Devuelve el número entero intoducido por teclado.
+	 */
 	public static int pedirInt() {
 		int numeroLec;
 		
@@ -22,8 +27,12 @@ public class herramientas {
 		lectorInt.nextLine();
 		
 		return numeroLec;
-		
-		}
+	}
+	/**Herramientas contiene metodos generales usados en el resto de clases.
+	 * Método que comprueba que el número menú está entre los valores deseados.
+	 * @author Adriandela
+	 * @return Devuelve el número entero de la elección.
+	 */
 	public static int buclemenu() {
 		int eleccionMenu;
 		boolean numCorrecto = false;
@@ -33,16 +42,19 @@ public class herramientas {
 		do {
 			if(eleccionMenu <=6 && eleccionMenu > 0) {
 				numCorrecto = true;
-				System.out.println("Ahora si");
 			}else {
 				System.out.println("Número erroneo");
 				eleccionMenu = herramientas.pedirInt();
 			}
-			
 		}while(!numCorrecto);
 		
 		return eleccionMenu;
 	}
+	/**Herramientas contiene metodos generales usados en el resto de clases.
+	 * Método que recorre un array buscando algún espacio vacío para el usuario.
+	 * @author Adriandela
+	 * @return Devuelve la primera posición vacía que encuentre.
+	 */
 	public static int verificarEspacioLibre(String[] mascotas){
 		int i = 0;
 		boolean libre = false;
@@ -60,9 +72,14 @@ public class herramientas {
 			}
 		}while(!libre && i < longitud );
 		
-		
 		return i;
-	}public static boolean verificarArrayVacio(String[] mascotas){
+	}
+	/**Herramientas contiene metodos generales usados en el resto de clases.
+	 * Método que recorre un array comprobando si hay alguna posición utilizada, termina cuando encuentra uno o llega al final del array.
+	 * @author Adriandela
+	 * @return Devuelve un valor booleano.
+	 */
+	public static boolean verificarArrayVacio(String[] mascotas){
 		int i = 0;
 		boolean vacio = true;
 		int longitud;
@@ -81,8 +98,4 @@ public class herramientas {
 		
 		return vacio;
 	}  
-	
-		
-	
-
 }

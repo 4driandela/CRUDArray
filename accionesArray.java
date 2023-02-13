@@ -35,15 +35,14 @@ public class accionesArray {
 	 *
 	 */
 	public static void buscarMascota(String especie, String raza, String dueño, String[] especies,String[]razas ,String[] dueños, int[] posicionesBusqueda) {
-		int k= 0;
 		int j = 0;
 
 		int longitudFiltro;
 		int longitudDueños;
 		
 		longitudDueños = dueños.length;
-			
-			for(int i = 0; i < longitudDueños; i++, j++) {
+			//Utilizo bucles for para guarde varias posiciones si se da el caso de que se hayan guardado diferentes entrada con datos idénticos.
+			for(int i = 0; i < longitudDueños; i++, j++) {//Guarda las posiciones que coinciden con el valor de dueño del array dueños en int[]posicionesBusqueda.
 				if(dueño.equals(dueños[i])) {
 					posicionesBusqueda[j] = i;
 					
@@ -54,7 +53,7 @@ public class accionesArray {
 			longitudFiltro = posicionesBusqueda.length;
 			j = 0;
 			
-			for(int i = 0; i< longitudFiltro;i++ ,j++) {
+			for(int i = 0; i< longitudFiltro;i++ ,j++) {//De las posiciones previamente guardadas vuelve a filtrar las que coinciden con el valor de especie.
 					if(posicionesBusqueda[i] != 99){
 						if(especie.equals(especies[posicionesBusqueda[i]])){
 							posicionesBusqueda[j] = posicionesBusqueda[i];
@@ -65,7 +64,7 @@ public class accionesArray {
 			}
 			j = 0;
 			
-			for(int i = 0; i < longitudFiltro; i++, j++) {
+			for(int i = 0; i < longitudFiltro; i++, j++) {//Termina con un último filtrado similar a los anteriores con el valor de raza.
 					if(posicionesBusqueda[i] != 99){
 					if(raza.equals(razas[posicionesBusqueda[i]])) {
 						posicionesBusqueda[j] = posicionesBusqueda[i];
@@ -139,7 +138,6 @@ public class accionesArray {
 		
 		int j = 0;
 		int longitudEspecies;
-		int[] posicionesFiltro = new int [20];
 		
 		longitudEspecies = especies.length;
 		
@@ -152,5 +150,25 @@ public class accionesArray {
 			}
 		}
 	}
+	/**AccionesArray contiene los métodos empleados para añadir, buscar y modificar. 
+	 * Método que "borra" la posición seleccionada.
+	 *@author Adriandela
+	 *
+	 *@param especies String[] Array que tiene guardados los string registrados previamente de especie.
+	 *@param dueños String[] Array que tiene guardados los string registrados previamente de especie.
+	 *@param razas String[] Array que tiene guardados los string registrados previamente de especie.
+	 *@param posicion int que tiene guardado la posición a borrar.
+	 */
+	public static void borrarArray( String[] dueños,String[] especies,String[] razas, int posicion) {
+		especies[posicion] = "";
+		
+		razas[posicion] = "";
+		
+		dueños[posicion] = "";
+		
+		mensajes.vistaArrays(dueños, especies, razas);
+	}
+	
+	
 	
 }
